@@ -1,15 +1,32 @@
-<h2><%= @task.title %></h2>
-<div class="container">
-  <p><%= @task.details %></p>
-  <p><%= @task.completed %></p>
+<body class="text-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-6">
+       <div class="card bg-light">
+          <h2><%= @task.title %></h2>
+          <p><%= @task.details %></p>
+          <p><%= @task.completed %></p>
+        </div>
+      </div>
+    </div>
 
-  <%= link_to "Edit #{@task.title}",
-            edit_path(@task) %>
-  <%= link_to "Delete #{@task.title}",
-            task_path(@task),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-  <div class="backlink">
-    <a href="/tasks">Back to list</a>
+    <div class="row justify-content-between">
+      <div class="col-12 col-6">
+        <div>
+          <%= link_to edit_task_path(@task) do %>
+            <div class="btn btn-warning">Edit Task</div>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to task_path(@task), method: :delete,
+                    data: { confirm: "Are you sure?" } do %>
+            <div class="btn btn-danger">Delete Task</div>
+          <% end %>
+        </div>
+        <div>
+          <a class="btn btn-success" href="/tasks">Back to list</a>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</body>
